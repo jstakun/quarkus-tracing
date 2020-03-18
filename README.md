@@ -38,11 +38,13 @@ curl -ivX GET localhost:8080/conversation
 
 Navigate to http://localhost:16686/ to access the Jaeger UI.
 
-Other links
+Links
 ```bash
 curl http://localhost:8080/hello
 curl http://localhost:8080/bonjour
+curl http://localhost:8080/conversation
 curl -H "Accept: application/json" http://localhost:8080/metrics/application
+curl http://localhost:8080/metrics
 curl http://localhost:8080/health/live
 curl http://localhost:8080/health/ready
 ```
