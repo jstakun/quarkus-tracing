@@ -5,6 +5,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 
 @Path("/")
@@ -14,20 +16,24 @@ public class GreetingResource {
 
     @Inject
     public ConversationService conversationService;
+    
+    @ConfigProperty(name = "hello.suffix", defaultValue="from the Cloud") 
+    String MSG;
 
     @GET
     @Path("/hello")
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        LOG.info("hello");
-        return "hello";
+        final String message = "Hello " + MSG;
+    	LOG.info(message);
+        return message;
     }
 
     @GET
     @Path("/bonjour")
     @Produces(MediaType.TEXT_PLAIN)
     public String bonjour() {
-        return "bonjour";
+    	return "Bonjour";
     }
 
     @GET
