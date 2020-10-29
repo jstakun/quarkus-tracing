@@ -20,12 +20,13 @@ public class GreetingResource {
     @ConfigProperty(name = "hello.suffix", defaultValue="from the Cloud") 
     String MSG;
 
-    final String message = "Hello " + MSG;
+    private static final String PREFIX = "Hello ";
     
     @GET
     @Path("/hello")
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
+    	final String message = PREFIX + MSG;
         LOG.info(message);
         return message;
     }
